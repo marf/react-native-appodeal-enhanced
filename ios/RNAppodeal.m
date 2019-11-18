@@ -466,7 +466,7 @@ RCT_EXPORT_METHOD(setGender:(NSString *)AppodealUserGender) {
 }*/
 
 - (void)nonSkippableVideoWillDismissAndWasFullyWatched:(BOOL)wasFullyWatched {
-    [self sendEventWithName:kEventNonSkippableVideoFullyWatched body:nil];
+    [self sendEventWithName:kEventNonSkippableVideoFullyWatched body:[NSNumber numberWithBool:wasFullyWatched]];
 }
 
 - (void)nonSkippableVideoDidFinish {
@@ -483,8 +483,8 @@ RCT_EXPORT_METHOD(setGender:(NSString *)AppodealUserGender) {
  [self sendEventWithName:kEventRewardedVideoLoaded body:nil];
  }*/
 
-- (void)rewardedVideoDidLoadAdIsPrecache {
-    [self sendEventWithName:kEventRewardedVideoDidLoadAdIsPrecache body:nil];
+- (void)rewardedVideoDidLoadAdIsPrecache:(BOOL)precache {
+    [self sendEventWithName:kEventRewardedVideoDidLoadAdIsPrecache body:@{@"precache":[NSNumber numberWithBool:precache]}];
 }
 
 - (void)rewardedVideoDidFailToLoadAd {
