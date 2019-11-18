@@ -48,8 +48,10 @@ static NSString *const kEventNonSkippableVideoLoaded = @"onNonSkippableVideoLoad
 static NSString *const kEventNonSkippableVideoDidLoadAdIsPrecache = @"onNonSkippableVideoDidLoadAdIsPrecache";
 static NSString *const kEventNonSkippableVideoFailedToLoad = @"onNonSkippableVideoFailedToLoad";
 static NSString *const kEventNonSkippableVideoShown = @"onNonSkippableVideoShown";
-static NSString *const kEventNonSkippableVideoClosed = @"onNonSkippableVideoClosed";
+//static NSString *const kEventNonSkippableVideoClosed = @"onNonSkippableVideoClosed";
+static NSString *const kEventNonSkippableVideoFullyWatched = @"onNonSkippableVideoWasFullyWatched";
 static NSString *const kEventNonSkippableVideoFinished = @"onNonSkippableVideoFinished";
+static NSString *const kEventNonSkippableVideoExpired = @"onNonSkippableVideoExpired";
 static NSString *const kEventNonSkippableVideoDidFailToPresentWithError = @"onNonSkippableVideoDidFailToPresentWithError";
 
 #pragma mark Convert types, styles and logs
@@ -129,7 +131,9 @@ RCT_EXPORT_MODULE();
              kEventNonSkippableVideoFailedToLoad,
              kEventNonSkippableVideoDidFailToPresentWithError,
              kEventNonSkippableVideoShown,
-             kEventNonSkippableVideoClosed,
+             //kEventNonSkippableVideoClosed,
+             kEventNonSkippableVideoFullyWatched,
+             kEventNonSkippableVideoExpired,
              kEventNonSkippableVideoFinished ];
 }
 
@@ -441,9 +445,9 @@ RCT_EXPORT_METHOD(setGender:(NSString *)AppodealUserGender) {
  }*/
 
 
-/*- (void)nonSkippableVideoDidFailToLoadAd {
+- (void)nonSkippableVideoDidFailToLoadAd {
  [self sendEventWithName:kEventNonSkippableVideoFailedToLoad body:nil];
- }*/
+ }
 
 - (void)nonSkippableVideoDidLoadAdIsPrecache:(BOOL)precache {
     [self sendEventWithName:kEventNonSkippableVideoDidLoadAdIsPrecache body:@{@"isPrecache":[NSNumber numberWithBool:precache]}];
@@ -457,13 +461,22 @@ RCT_EXPORT_METHOD(setGender:(NSString *)AppodealUserGender) {
     [self sendEventWithName:kEventNonSkippableVideoShown body:nil];
 }
 
-- (void)nonSkippableVideoWillDismiss {
+/*- (void)nonSkippableVideoWillDismiss {
     [self sendEventWithName:kEventNonSkippableVideoClosed body:nil];
+}*/
+
+- (void)nonSkippableVideoWillDismissAndWasFullyWatched:(BOOL)wasFullyWatched {
+    [self sendEventWithName:kEventNonSkippableVideoFullyWatched body:nil];
 }
 
 - (void)nonSkippableVideoDidFinish {
     [self sendEventWithName:kEventNonSkippableVideoFinished body:nil];
 }
+
+- (void)nonSkippableVideoDidExpired {
+    [self sendEventWithName:kEventNonSkippableVideoExpired body:nil];
+}
+
 
 #pragma mark - Rewarded video events
 /*- (void)rewardedVideoDidLoadAd {
