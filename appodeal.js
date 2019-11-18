@@ -45,12 +45,13 @@ const eventHandlers = {
   onRewardedVideoPresented:'onRewardedVideoPresented',
 
   onNonSkippableVideoDidLoadAdIsPrecache: 'onNonSkippableVideoDidLoadAdIsPrecache',
-  onNonSkippableVideoClosed: 'onNonSkippableVideoClosed',
   onNonSkippableVideoFailedToLoad: 'onNonSkippableVideoFailedToLoad',
   onNonSkippableVideoFinished: 'onNonSkippableVideoFinished',
   onNonSkippableVideoLoaded: 'onNonSkippableVideoLoaded',
   onNonSkippableVideoShown: 'onNonSkippableVideoShown',
   onNonSkippableVideoDidFailToPresentWithError: 'onNonSkippableVideoDidFailToPresentWithError',
+  onNonSkippableVideoWasFullyWatched: 'onNonSkippableVideoWasFullyWatched',
+  onNonSkippableVideoExpired: 'onNonSkippableVideoExpired',
 };
 
 const LogLevel = {
