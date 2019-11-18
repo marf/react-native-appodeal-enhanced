@@ -348,7 +348,7 @@ public class RNAppodealModule extends ReactContextBaseJavaModule implements Inte
 	public void onNonSkippableVideoClosed(boolean isFinished) {
 		WritableMap params = Arguments.createMap();
 		params.putBoolean("isFinished", isFinished);
-		sendEventToJS("onNonSkippableVideoClosed", params);
+		sendEventToJS("onNonSkippableVideoWasFullyWayched", params);
 	}
 
 	@Override
@@ -358,7 +358,7 @@ public class RNAppodealModule extends ReactContextBaseJavaModule implements Inte
 
 	@Override
 	public void onNonSkippableVideoShowFailed() {
-		sendEventToJS("onNonSkippableFailedShown", null);
+		sendEventToJS("onNonSkippableDidFailToPresentWithError", null);
 	}
 
 	@Override
@@ -375,7 +375,7 @@ public class RNAppodealModule extends ReactContextBaseJavaModule implements Inte
 	public void onNonSkippableVideoLoaded(boolean loaded) {
 		WritableMap params = Arguments.createMap();
 		params.putBoolean("loaded", loaded);
-		sendEventToJS("onNonSkippableVideoLoaded", params);
+		sendEventToJS("onNonSkippableDidLoadAdIsPrecache", params);
 	}
 
 	@Override
