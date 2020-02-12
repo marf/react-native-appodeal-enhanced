@@ -243,31 +243,25 @@ public class RNAppodealModule extends ReactContextBaseJavaModule implements Inte
 		}
 	}
 
-	private UserSettings getUserSettings(){
-		if(settings == null) {
-			settings = Appodeal.getUserSettings(getCurrentActivity());
-		}
-		return settings;
-	}
 
 	@ReactMethod
 	public void setAge(int age){
-		getUserSettings().setAge(age);
+		Appodeal.setUserAge(age);
 	}
 
 	@ReactMethod
 	public void setUserId(String id){
-		getUserSettings().setUserId(id);
+		Appodeal.setUserId(id);
 	}
 
 	@ReactMethod
 	public void setGender(String gender){
 		if (gender.equals("male"))
-			getUserSettings().setGender(com.appodeal.ads.UserSettings.Gender.MALE);
+			Appodeal.setUserGender(com.appodeal.ads.UserSettings.Gender.MALE);
 		else if (gender.equals("female"))
-			getUserSettings().setGender(com.appodeal.ads.UserSettings.Gender.FEMALE);
+			Appodeal.setUserGender(com.appodeal.ads.UserSettings.Gender.FEMALE);
 		else if (gender.equals("other"))
-			getUserSettings().setGender(com.appodeal.ads.UserSettings.Gender.OTHER);
+			Appodeal.setUserGender(com.appodeal.ads.UserSettings.Gender.OTHER);
 	}
 
 	private void sendEventToJS(String eventName, WritableMap params){
