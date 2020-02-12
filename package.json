@@ -54,7 +54,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/appodeal/react-native-appodeal-enhanced.git"
+    "url": "git+https://github.com/marf/react-native-appodeal-enhanced.git"
   },
   "version": "1.0.4"
 }
