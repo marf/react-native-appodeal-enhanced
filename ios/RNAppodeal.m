@@ -6,12 +6,11 @@
 #import "RCTUtils.h"
 #endif
 
-const int INTERSTITIAL        = 1;
-const int BANNER              = 4;
-const int BANNER_BOTTOM       = 8;
-const int BANNER_TOP          = 16;
-const int REWARDED_VIDEO      = 128;
-const int NON_SKIPPABLE_VIDEO = 256;
+const int INTERSTITIAL          = 1 << 0;
+const int BANNER_TOP            = 1 << 2;
+const int BANNER_BOTTOM         = 1 << 3;
+const int REWARDED_VIDEO        = 1 << 4;
+const int NON_SKIPPABLE_VIDEO   = 1 << 6;
 
 NSMutableDictionary *customRules;
 BOOL isRewardedFinished;
@@ -60,8 +59,7 @@ AppodealAdType nativeAdTypesForType(int adTypes) {
     if ((adTypes & INTERSTITIAL) > 0) {
         nativeAdTypes |= AppodealAdTypeInterstitial;
     }
-    if ((adTypes & BANNER) > 0 ||
-        (adTypes & BANNER_TOP) > 0 ||
+    if ((adTypes & BANNER_TOP) > 0 ||
         (adTypes & BANNER_BOTTOM) > 0) {
         nativeAdTypes |= AppodealAdTypeBanner;
     }
@@ -145,7 +143,7 @@ RCT_EXPORT_METHOD(initialize:(NSString *)appKey types:(int)adType
         customRules = [[NSMutableDictionary alloc] init];
         [Appodeal initializeWithApiKey:appKey types:nativeAdTypesForType(adType) hasConsent:true];
         
-        //[Appodeal setLogLevel:APDLogLevelVerbose];
+        [Appodeal setLogLevel:APDLogLevelVerbose];
         
         [Appodeal setRewardedVideoDelegate:self];
         //[Appodeal setNonSkippableVideoDelegate:self];
@@ -234,12 +232,6 @@ RCT_EXPORT_METHOD(setSmartBanners:(BOOL)val) {
     });
 }
 
-RCT_EXPORT_METHOD(setBannerBackground:(BOOL)val) {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [Appodeal setBannerBackgroundVisible:val];
-    });
-}
-
 RCT_EXPORT_METHOD(setBannerAnimation:(BOOL)val) {
     dispatch_async(dispatch_get_main_queue(), ^{
         [Appodeal setBannerAnimationEnabled:val];
@@ -289,8 +281,7 @@ RCT_EXPORT_METHOD(disableNetwork:(NSString *)name) {
 
 RCT_EXPORT_METHOD(disableNetworkType:(NSString *)name types:(int)adType) {
     dispatch_async(dispatch_get_main_queue(), ^{
-        if ((adType & BANNER) > 0 ||
-            (adType & BANNER_TOP) > 0 ||
+        if ((adType & BANNER_TOP) > 0 ||
             (adType & BANNER_BOTTOM) > 0) {
             [Appodeal disableNetworkForAdType:AppodealAdTypeBanner name:name];
         }
