@@ -7,13 +7,11 @@ import {
 
 const RNAppodeal = NativeModules.RNAppodeal;
 
-const NONE = 0;
-const INTERSTITIAL = 1;
-const BANNER = 4;
-const BANNER_BOTTOM = 8;
-const BANNER_TOP = 16;
-const REWARDED_VIDEO = 128;
-const NON_SKIPPABLE_VIDEO = 256;
+const INTERSTITIAL          = 1 << 0;
+const BANNER_TOP            = 1 << 2;
+const BANNER_BOTTOM         = 1 << 3;
+const REWARDED_VIDEO        = 1 << 4;
+const NON_SKIPPABLE_VIDEO   = 1 << 6;
 
 const eventEmitter = new NativeEventEmitter(RNAppodeal);
 
@@ -104,7 +102,6 @@ const removeAllListeners = () => {
 module.exports = {
   ...RNAppodeal,
   INTERSTITIAL,
-  BANNER,
   BANNER_TOP,
   BANNER_BOTTOM,
   REWARDED_VIDEO,
