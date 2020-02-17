@@ -28,7 +28,7 @@ dependencies {
     implementation fileTree(dir: "aar", include: ["*.aar"])
     implementation 'com.facebook.react:react-native:+'
 
-    implementation ('com.appodeal.ads:sdk:2.6.0.0') {
+    implementation ('com.appodeal.ads:sdk:2.6.1.+') {
         exclude module: 'retrofit'
         exclude module: 'okhttp'
         exclude module: 'okio'
