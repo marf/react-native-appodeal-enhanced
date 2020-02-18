@@ -14,13 +14,31 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/marf/react-native-appodeal-enhanced.git", :tag => "master" }
   s.source_files  = "*.{h,m}"
   s.requires_arc = true
-
+  s.static_framework = true
 
   s.dependency "React"
-  s.dependency "Appodeal/Core"
-  s.dependency "Appodeal/Interstitial"
-  s.dependency "Appodeal/Video"
-  s.dependency "Appodeal/TwitterMoPubAdapter"
+  s.dependency "APDAdColonyAdapter"
+  s.dependency "APDAmazonAdsAdapter"
+  s.dependency "APDAppLovinAdapter"
+  s.dependency "APDAppodealAdExchangeAdapter"
+  s.dependency "APDChartboostAdapter"
+  s.dependency "APDFacebookAudienceAdapter"
+  s.dependency "APDGoogleAdMobAdapter" 
+  s.dependency "APDInMobiAdapter"
+  s.dependency "APDInnerActiveAdapter"
+  s.dependency "APDIronSourceAdapter"
+  s.dependency "APDMintegralAdapter"
+  s.dependency "APDMyTargetAdapter"
+  s.dependency "APDOguryAdapter"
+  s.dependency "APDOpenXAdapter"
+  s.dependency "APDPubnativeAdapter"
+  s.dependency "APDSmaatoAdapter"
+  s.dependency "APDStartAppAdapter"
+  s.dependency "APDTapjoyAdapter"
+  s.dependency "APDUnityAdapter"
+  s.dependency "APDVungleAdapter"
+  s.dependency "APDYandexAdapter"
+
   #s.dependency "others"
 
 end
