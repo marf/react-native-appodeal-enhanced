@@ -29,6 +29,7 @@ Pod::Spec.new do |s|
   s.dependency "APDIronSourceAdapter"
   s.dependency "APDMintegralAdapter"
   s.dependency "APDMyTargetAdapter"
+  s.dependency "APDTwitterMoPubAdapter"
   s.dependency "APDOguryAdapter"
   s.dependency "APDOpenXAdapter"
   s.dependency "APDPubnativeAdapter"
