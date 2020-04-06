@@ -143,7 +143,7 @@ RCT_EXPORT_METHOD(initialize:(NSString *)appKey types:(int)adType
         customRules = [[NSMutableDictionary alloc] init];
         [Appodeal initializeWithApiKey:appKey types:nativeAdTypesForType(adType) hasConsent:true];
         
-        [Appodeal setLogLevel:APDLogLevelVerbose];
+        //[Appodeal setLogLevel:APDLogLevelVerbose];
         
         [Appodeal setRewardedVideoDelegate:self];
         //[Appodeal setNonSkippableVideoDelegate:self];
